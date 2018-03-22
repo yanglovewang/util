@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style rel="stylesheet" content="text/css">
+#canvas {
+	border:1px solid;
+}
+</style>
+<body>
+	<canvas id="canvas" width="400" height="300"></canvas>
+</body>
+</html>
+<script>
+var log = console.log.bind(console)
+
+var imagefromPath = function(path) {
+	var img = new Image()
+	img.src = path
+	return img
+}
+var Paddle = function() {
+	var image = imagefromPath('bar.jpg')
+	var o = {
+		image:image,
+		x:200,
+		y:200,
+		speed:5,
+	}
+
+	o.moveLeft = function() {
+		o.x = o.x - o.speed
+	}
+	o.moveRight = function() {
+		o.x = o.x + o.speed
+	}
+	return o
+}
+
+var GuaGame = function() {
+	var g = {
+		actions:{},
+		keys:{},
+	}
+	var canvas = document.querySelector("canvas")
+	var context = canvas.getContext('2d')
+  g.canvas = canvas
+  g.context = context
+  //event
+	window.addEventListener('keydown' , function(event) {
+			if()
+	})
+  g.registAction('')
+	setInterval(function() {
+		//update
+		g.update()
+		//clear
+		context.clearRect(0, 0, canvas.width, canvas.height)
+		//draw
+		g.draw()
+	} , 1000/30)
+	return g
+}
+
+var __main = function() {
+	 var game = GuaGame()
+	var leftDown = false
+	var rightDown = false
+  var paddle = Paddle()
+	
+	gaime.rigistAction('a' , function(){
+		paddle.moveLeft()
+	})
+
+	window.addEventListener('keyup' , function(event) {
+		var key = event.key;
+		if(key === 'a') {
+			leftDown = false
+		}else if(key === 'd') {
+			rightDown = false;
+		}
+	})
+
+	//update
+  game.update = function() {
+		if(leftDown) {
+			paddle.moveLeft()
+		}else if(rightDown) {
+			paddle.moveRight()
+		}
+		}
+	}
+	game.draw = function() {
+		//draw
+		game.context.drawImage(paddle.image , paddle.x , paddle.y)
+	}
+}
+
+__main()
+
+</script>
