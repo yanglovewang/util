@@ -6,7 +6,7 @@ var e = function(element) {
 	return document.querySelector(element);
 }
 
-//对某个元素进行监听
+//对某个元素进行监听 这一行修改
 var bindEvent = function(element, eventName, callback) {
     element.addEventListener(eventName, callback);
 }
