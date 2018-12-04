@@ -20,7 +20,7 @@ var toggleClass = function(element, className) {
 	}
 }
 
-// 绑定同类事件：同类元素，监听事件，回掉函数
+//  绑定同类事件：同类元素，监听事件回掉函数
 var bindAll = function(selector, eventName, callback) {
 	for (var i = 0; i < selector.length; i++) {
 		var button = selector[i];
